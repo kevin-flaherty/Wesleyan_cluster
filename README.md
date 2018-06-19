@@ -11,4 +11,8 @@ This repository contains a guide to using Wesleyan's computing cluster, as well 
 
 **turb_co21.parallel**: An example script for submitting a parallel job for the miniconda2 version of python, which uses a different version of mpi
 
-**turb_co21_blcr**: An example script for submitting a job that takes advantage of the checkpointing capabilities available on the cluster. 
+**turb_co21_blcr**: An example script for submitting a job that takes advantage of the checkpointing capabilities available on the cluster.
+
+**mpi_run_models_co21.py**: An example python script that would be called by the submission script. This illustrates setting up a parallel job through EMCEE.
+
+**test.py**: An example python script that would be called by the submission script. This is for a simple serial job that does one function call within python. 
