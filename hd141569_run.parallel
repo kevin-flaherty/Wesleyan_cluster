@@ -25,6 +25,7 @@ cp hd141569.co-c.clip.vis.fits /sanscratch/$LSB_JOBID
 export PATH=/share/apps/openmpi/1.2+intel-10/bin:$PATH
 export LD_LIBRARY_PATH=/share/apps/openmpi/1.2+intel-10/lib:$LD_LIBRARY_PATH
 
+#requires the file lava.openmpi.wrapper, available from /home/hmeij/jobs/parallel/
 ./lava.openmpi.wrapper python mpi_run_models.py /sanscratch/$LSB_JOBID > /sanscratch/$LSB_JOBID/test.out
 
 mv /sanscratch/$LSB_JOBID/chain*.dat /home/kflaherty/hd141569/

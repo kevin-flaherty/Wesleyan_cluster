@@ -35,6 +35,7 @@ export PATH=/share/apps/CENTOS6/miniconda2/bin:$PATH
 export LD_LIBRARY_PATH=/share/apps/CENTOS6/miniconda2/lib:$LD_LIBRARY_PATH
 #which mpirun 
 
+#requires the file mpich_mpirun, which is available from /opt/openlava-3.1/bin/
 ./mpich-mpirun python mpi_run_models_co21.py $MYSANSCRATCH > test.out
 
 
