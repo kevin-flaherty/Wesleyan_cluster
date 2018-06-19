@@ -1,0 +1,41 @@
+#!/bin/bash
+rm -f dmtau_co21_han.stdout dmtau_co21_han.stderr
+# submit via 'busb < turb_co21.parallel'
+
+#Use this code if you want to use Galario for model calculation
+
+export MYSANSCRATCH=/sanscratch/$LSB_JOBID
+cd $MYSANSCRATCH
+#pwd
+
+#BSUB -J dmtau_co21_han
+#BSUB -e dmtau_co21_han.stderr
+#BSUB -o dmtau_co21_han.stdout
+#BSUB -n 12
+#BSUB -R "span[hosts=1]"
+#BSUB -q mw256fd
+#BSUB -N
+
+. /home/apps/miriad/MIRRC.sh
+export PATH=$MIRBIN:$PATH
+#which python 
+
+
+cp -r $HOME/dmtau/dmtaush_co21sb.vis.fits .
+cp -r $HOME/dmtau/dmtaush_co21lb.vis.fits .
+cp -r $HOME/dmtau/co.dat .
+cp -r $HOME/dmtau/disk.py .
+cp -r $HOME/dmtau/raytrace.py .
+cp -r $HOME/dmtau/mpi_run_models_co21.py .
+cp -r $HOME/dmtau/single_model.py .
+cp -r $HOME/dmtau/mpich-mpirun .
+
+#Use the miniconda2 version of python, which has galario (as well as astropy and emcee)
+export PATH=/share/apps/CENTOS6/miniconda2/bin:$PATH
+export LD_LIBRARY_PATH=/share/apps/CENTOS6/miniconda2/lib:$LD_LIBRARY_PATH
+#which mpirun 
+
+./mpich-mpirun python mpi_run_models_co21.py $MYSANSCRATCH > test.out
+
+
+scp $MYSANSCRATCH/chain*.dat $HOME/dmtau/

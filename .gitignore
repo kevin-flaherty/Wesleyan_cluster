@@ -1,0 +1,9 @@
+*.log
+*.dvi
+*.aux
+*.ps
+*.tex
+*.tex~
+*.eps
+*eps-converted-to.pdf
+*syntex.gz

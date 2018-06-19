@@ -1,0 +1,36 @@
+#!/bin/bash
+# submit via 'bsub < run_test'
+
+#BSUB -q mw256fd
+#BSUB -J test
+#BSUB -o test.stdout
+#BSUB -e test.stderr
+#BSUB -n 1
+
+
+export MYSANSCRATCH=/localscratch5tb/$LSB_JOBID
+cd $MYSANSCRATCH
+
+export PYTHONHOME=/home/apps/python/2.6.1
+export PYTHONPATH=/home/apps/python/2.6.1/site-packages
+export PATH=$PYTHONHOME/bin:$PATH
+. /home/apps/miriad/MIRRC.sh
+export PATH=$MIRBIN:$PATH
+
+
+scp -r $HOME/dmtau/dmtaush_co21sb.vis .
+scp -r $HOME/dmtau/dmtaush_co21sb.vis.fits .
+scp -r $HOME/dmtau/dmtaush_co21lb.vis .
+scp -r $HOME/dmtau/dmtaush_co21lb.vis.fits .
+scp -r $HOME/dmtau/co.dat .
+scp -r $HOME/dmtau/disk.py .
+scp -r $HOME/dmtau/raytrace.py .
+scp -r $HOME/dmtau/sample_co21.sh .
+scp -r $HOME/dmtau/single_model.py . 
+scp -r $HOME/dmtau/test.py .
+
+
+python test.py 
+
+
+
