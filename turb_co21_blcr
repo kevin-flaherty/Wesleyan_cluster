@@ -19,6 +19,7 @@ queue=mw256fd
 # next required for mpirun checkpoint to work
 # restarts must use same QUEUE 
 #BSUB -R "span[hosts=1]"
+##BUSB -m n44
 
 # CHECK POINT TIME INTERVAL: 10m (debug) 6h 12h 18h 1d 
 cpti=2d
